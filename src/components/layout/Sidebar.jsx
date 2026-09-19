@@ -37,36 +37,36 @@ export const Sidebar = ({ isOpen, onClose }) => {
       {isOpen && (
         <div
           onClick={onClose}
-          className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-40 lg:hidden"
+          className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-50 lg:hidden"
         />
       )}
 
-      {/* Dark Luxury Gradient Sidebar Panel */}
+      {/* Horizon UI Inspired Sidebar Panel */}
       <aside
         className={cn(
-          'fixed lg:sticky top-16 z-40 h-[calc(100vh-4rem)] bg-gradient-to-b from-slate-950 via-slate-900 to-indigo-950 text-slate-300 border-r border-slate-800/90 transition-all duration-300 flex flex-col justify-between overflow-y-auto select-none',
+          'fixed lg:sticky top-16 sm:top-20 z-50 h-[calc(100vh-4rem)] sm:h-[calc(100vh-5rem)] bg-white text-slate-700 border-r border-slate-200/80 transition-all duration-300 flex flex-col justify-between overflow-y-auto select-none font-sans',
           'w-64',
-          isOpen ? 'left-0' : '-left-64 lg:left-0'
+          isOpen ? 'left-0 shadow-2xl' : '-left-64 lg:left-0'
         )}
       >
-        {/* Navigation Items Group */}
+        {/* Navigation Group */}
         <div className="p-4 space-y-6">
           {/* Mobile Header Close */}
-          <div className="flex items-center justify-between pb-3 border-b border-slate-800 lg:hidden">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-100 lg:hidden">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400 font-heading">
               Menu Navigation
             </span>
             <button
               onClick={onClose}
-              className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
+              className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
           <div>
-            <p className="px-3 text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2.5 font-heading">
-              Main Navigation
+            <p className="px-3 text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3 font-heading">
+              Main Menu
             </p>
             <nav className="space-y-1.5">
               {navItems.map((item) => {
@@ -78,10 +78,10 @@ export const Sidebar = ({ isOpen, onClose }) => {
                     onClick={onClose}
                     className={({ isActive }) =>
                       cn(
-                        'flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 group',
+                        'flex items-center gap-3.5 px-3.5 py-3 rounded-2xl text-xs font-medium transition-all duration-200 group',
                         isActive
-                          ? 'bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white font-semibold shadow-lg shadow-blue-900/40'
-                          : 'text-slate-300 hover:bg-slate-800/80 hover:text-white'
+                          ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-500/25'
+                          : 'text-slate-600 hover:bg-slate-100/80 hover:text-slate-900'
                       )
                     }
                   >
@@ -89,10 +89,10 @@ export const Sidebar = ({ isOpen, onClose }) => {
                       <>
                         <div
                           className={cn(
-                            'w-7.5 h-7.5 rounded-lg flex items-center justify-center shrink-0 transition-colors',
+                            'w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-colors',
                             isActive
                               ? 'bg-blue-700/60 text-white'
-                              : 'bg-slate-800/90 text-slate-400 group-hover:text-slate-200 group-hover:bg-slate-700'
+                              : 'bg-slate-100 text-slate-500 group-hover:text-slate-800 group-hover:bg-slate-200/80'
                           )}
                         >
                           <IconComponent className="w-4 h-4" />
@@ -106,32 +106,38 @@ export const Sidebar = ({ isOpen, onClose }) => {
             </nav>
           </div>
 
-          {/* Floating Glass Help Card */}
-          <div className="p-4 rounded-2xl bg-slate-800/60 backdrop-blur-md border border-slate-700/60 text-slate-300 space-y-2">
-            <h4 className="text-xs font-bold text-white flex items-center gap-1.5 font-heading">
-              <Lock className="w-3.5 h-3.5 text-blue-400" />
-              Document Protection
+          {/* Horizon UI Dark Floating Bottom Card */}
+          <div className="p-4.5 rounded-3xl bg-gradient-to-br from-blue-900 via-indigo-950 to-slate-900 text-white space-y-2 shadow-xl relative overflow-hidden">
+            <div className="absolute -right-4 -bottom-4 w-20 h-20 bg-blue-500/20 rounded-full blur-xl pointer-events-none" />
+            
+            <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold shadow-md">
+              <Lock className="w-4 h-4 text-blue-200" />
+            </div>
+
+            <h4 className="text-xs font-bold text-white font-heading">
+              Document Security
             </h4>
-            <p className="text-[11px] text-slate-400 leading-relaxed">
-              Every uploaded file is protected using 256-bit isolation protocols.
+            <p className="text-[11px] text-blue-200/90 leading-relaxed">
+              Every submitted record is isolated and protected with 256-bit encryption.
             </p>
+
             <NavLink
               to="/help"
               onClick={onClose}
-              className="inline-flex text-[11px] font-semibold text-blue-400 hover:text-blue-300 underline pt-1"
+              className="inline-block text-[11px] font-bold text-blue-300 hover:text-white underline pt-1"
             >
-              View Security Guidelines →
+              View Guidelines →
             </NavLink>
           </div>
         </div>
 
         {/* Sidebar Footer */}
-        <div className="p-4 border-t border-slate-800/80 bg-slate-950/40">
+        <div className="p-4 border-t border-slate-100 bg-slate-50/50">
           <div className="flex items-center justify-between text-[11px] text-slate-400 font-medium">
             <span>CertiScan Portal</span>
-            <span className="flex items-center gap-1 text-emerald-400 font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              Operational
+            <span className="flex items-center gap-1.5 text-emerald-600 font-semibold">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Active
             </span>
           </div>
         </div>
