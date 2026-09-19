@@ -8,7 +8,7 @@ export const AppLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50">
+    <div className="min-h-screen flex flex-col bg-[#f4f7fe]">
       {/* Top Sticky Header */}
       <Header onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
 
@@ -18,7 +18,7 @@ export const AppLayout = () => {
         <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
         {/* Dynamic Main Route Content */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 min-w-0 overflow-y-auto">
+        <main className="flex-1 p-3.5 sm:p-6 lg:p-8 min-w-0 overflow-y-auto">
           <Outlet />
         </main>
       </div>
